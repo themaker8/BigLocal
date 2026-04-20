@@ -1,0 +1,18 @@
+PIR_PIN = 17
+MIC_SCK_PIN = 18
+MIC_WS_PIN = 19
+MIC_SD_PIN = 20
+
+#DISPLAY PINOUT
+
+OLED_SDA_PIN = 2
+OLED_SCL_PIN = 3
+OLED_ADDR = 0x3C
+
+STATUS_LED = 26
+DB_PATH = "logs/BigLocal.db"
+CHROMA_PATH = "knowledge/chromadb"
+
+LLM_MODEL = ""
+
+
