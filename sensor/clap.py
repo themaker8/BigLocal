@@ -1,3 +1,4 @@
+
 import array
 import time
 from sensor.mic import I2SMicrophone

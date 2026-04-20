@@ -1,14 +1,12 @@
-import gpiozero.MotionSensor
 from gpiozero import MotionSensor
 from config import PIR_PIN
 
 class PIRSensor:
     def __init__(self):
-        self.sensor = MotionSensor(pin)
+        self.sensor = MotionSensor(PIR_PIN)
 
     def wait_for_motion(self):
         self.sensor.wait_for_motion()
-
 
     def wait_for_no_motion(self):                           
          self.sensor.wait_for_no_motion()                    

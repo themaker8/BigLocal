@@ -19,6 +19,6 @@ class OLEDDisplay:
 
     def show_status(self, motion=False, clap=False):
         with canvas(self.device) as draw:
-            draw.rectangle(self.device.bounding_box, outline="white")
+            draw.rectangle(self.device.bounding_box, outline="white", fill='black')
             draw.text((10, 10), f"Motion: {'YES' if motion else 'NO'}", fill="white")
             draw.text((10, 30), f"Clap: {'YES' if clap else 'NO'}", fill="white")
