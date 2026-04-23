@@ -4,6 +4,13 @@ from faster_whisper import WhisperModel
 import numpy as np
 import threading
 import time # For demonstration/testing purposes
+import platform
+import sounddevice as sd # Import sounddevice to query devices locally
+# This example requires sensors/mic.py and scipy to be working
+from audio.mic import I2SMicrophone
+from scipy.io.wavfile import write as write_wav
+
+
 
 class SpeechToText:
     """
@@ -49,27 +56,39 @@ class SpeechToText:
         segments, info = self.model.transcribe(
             audio_float32, 
             language="en", 
-            beam_size=5 # Default beam size, good balance for accuracy/speed
+            beam_size=5,
+            no_speech_threshold=0.4
         )
 
+        print(f'transcription info {info}')
+
         full_transcription = []
+        segment_count = 0
         for segment in segments:
             full_transcription.append(segment.text)
-        
+            segment_count +=1
+        print(f'no of sgements{segment_count}')
         return "".join(full_transcription).strip()
 
-# --- Example Usage (for testing the module) ---
-if __name__ == "__main__":
-    # This example requires sensors/mic.py and scipy to be working
-    from sensors.mic import I2SMicrophone
-    from scipy.io.wavfile import write as write_wav
 
-    # Setup microphone
+if __name__ == "__main__":
+    # Determine the microphone for testing based on OS
+    mic_test_kwargs = {}
+    if platform.system() == "Windows":
+        print("Detected Windows OS. Attempting to use default microphone for local testing.")
+        mic_test_kwargs = {"device_id": 1} # -1 usually means default input device
+        print("If testing fails, please run 'python -m sounddevice' in your terminal")
+        print("and adjust 'device_id' or 'device_name_part' in the stt.py example usage.")
+    else: # Assume Raspberry Pi OS or similar Linux
+        print("Detected non-Windows OS. Attempting to use I2S microphone (Pi-specific).")
+        mic_test_kwargs = {"device_name_part": "i2s"} # Pi-specific I2S device
+
+    # Setup microphone and STT processor
     try:
-        mic = I2SMicrophone(device_name_part="i2s")
+        mic = I2SMicrophone(**mic_test_kwargs)
         stt_processor = SpeechToText(model_size="tiny.en") # Use tiny.en for Pi 5 testing
 
-        print("--- STT Test: Speak for 5 seconds ---")
+        print("\n--- STT Test: Speak for 5 seconds ---")
         mic.start_recording()
         print("Recording...")
         time.sleep(5)
@@ -77,14 +96,14 @@ if __name__ == "__main__":
 
         if audio_data.size > 0:
             print(f"Recorded {audio_data.size} samples. Transcribing...")
-            
+
             # You can optionally save the recorded audio for debugging
-            # wav_filename = "stt_test_recording.wav"
-            # write_wav(wav_filename, mic.sample_rate, audio_data)
-            # print(f"Test audio saved to {wav_filename}")
+            wav_filename = "stt_test_recording.wav"
+            write_wav(wav_filename, mic.sample_rate, audio_data)
+            #print(f"Test audio saved to {wav_filename}")
 
             transcribed_text = stt_processor.transcribe_audio(audio_data)
-            print(f"Transcribed Text: {transcribed_text}")
+            print(f"\nTranscribed Text: \"{transcribed_text}\"")
         else:
             print("No audio recorded for transcription.")
 
@@ -92,7 +111,9 @@ if __name__ == "__main__":
 
     except RuntimeError as e:
         print(f"Initialization or Runtime Error: {e}")
-        print("Please ensure your I2S microphone is properly configured and detected.")
+        print("Please ensure your microphone is properly configured and detected.")
+        if platform.system() != "Windows":
+            print("For Raspberry Pi, ensure I2S is enabled and dtoverlay=i2s-mmap is configured.")
     except ImportError:
         print("Error: 'scipy' or 'faster_whisper' or 'sounddevice' not installed.")
         print("Please install them: pip install scipy faster-whisper sounddevice numpy")

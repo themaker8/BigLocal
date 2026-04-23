@@ -1,6 +1,6 @@
 from scipy.io.wavfile import write as write_wav
-import sounddevice as sd # Use sd alias for brevity
-import numpy as np       # Import numpy for audio data
+import sounddevice as sd 
+import numpy as np       
 import collections
 import threading
 import time 
@@ -9,7 +9,6 @@ class I2SMicrophone:
     """
     Handles non-blocking audio capture from an I2S microphone using sounddevice.
     """
-
     @staticmethod
     def find_i2s_device_index(name_part):
         """
@@ -17,7 +16,6 @@ class I2SMicrophone:
         """
         devices = sd.query_devices()
         for i, device in enumerate(devices):
-            # Check if it's an input device and if its name contains the specified part
             if device.get('max_input_channels', 0) > 0 and name_part.lower() in device.get('name', '').lower():
                 print(f"Found I2S input device: {device['name']} at index {i}")
                 return i
@@ -25,24 +23,22 @@ class I2SMicrophone:
         raise RuntimeError(f"I2S input device containing '{name_part}' not found. "
                            "Ensure I2S is enabled and dtoverlay=i2s-mmap is configured in /boot/config.txt.")
 
-    def __init__(self, sample_rate=44100, channels=1, dtype='int16', device_name_part="i2s"):
+    def __init__(self, sample_rate=44100, channels=1, dtype='int16', device_name_part="i2s", device_id=None):
         """
         Initializes the I2S Microphone for non-blocking capture.
         """
         self.sample_rate = sample_rate
         self.channels = channels
         self.dtype = dtype
-        
-        # collections.deque is more efficient for appending/popping from both ends
         self.audio_buffer = collections.deque() 
-        self.stream = None # Placeholder for the sounddevice.InputStream object
-        self._is_recording = threading.Event() # Event to signal recording status
+        self.stream = None 
+        self._is_recording = threading.Event() 
 
-        # Find the correct I2S input device index
-        self.input_device_index = I2SMicrophone.find_i2s_device_index(device_name_part)
+        if device_id is not None:
+            self.input_device_index = device_id
+        else:
+            self.input_device_index = I2SMicrophone.find_i2s_device_index(device_name_part)
 
-        # Initialize the sounddevice.InputStream
-        # The callback function will be called whenever new audio data is available
         self.stream = sd.InputStream(
             samplerate=self.sample_rate,
             channels=self.channels,
@@ -61,7 +57,7 @@ class I2SMicrophone:
         if status:
             print(f"Sounddevice Stream Status: {status}")
         
-        # Only append data if recording is active
+        
         if self._is_recording.is_set():
             # It's important to make a copy, as indata is a view into a buffer
             self.audio_buffer.append(np.copy(indata))
@@ -111,9 +107,7 @@ class I2SMicrophone:
 
 # --- Example Usage (for testing the module) ---
 if __name__ == "__main__":
-    # You might need to change 'i2s' to something specific like 'snd_rpi_i2s_card'
-    # depending on how your system names the device after dtoverlay.
-    # Run `python3 -m sounddevice` in your terminal to see device names.
+    
     try:
         mic = I2SMicrophone(device_name_part="i2s") # Adjust name_part if needed
 

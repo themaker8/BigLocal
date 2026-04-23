@@ -1,7 +1,7 @@
 
 import array
 import time
-from sensor.mic import I2SMicrophone
+from audio.cl import I2SMicrophone
 
 class ClapDetector:
     def __init__(self, mic: I2SMicrophone, threshold=10000):
