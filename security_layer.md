@@ -1,4 +1,4 @@
-# Batcave OS: Security Layer - Hardware-in-the-Loop (HITL) Gatekeeping
+# BigLocal: Security Layer - Hardware-in-the-Loop (HITL) Gatekeeping
 
 ## Overview
 Standard autonomous agents (like OpenClaw or AutoGPT) often operate with high agency, meaning they can execute shell commands, modify files, or access network resources without real-time human oversight. The **Sentinel Gatekeeping** model introduces a physical "Air Gap" for authorization.
