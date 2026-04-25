@@ -11,9 +11,8 @@ CORE_BRAIN_URL = "http://192.168.1.100:8000" # Example IP
 BATCAVE_TOKEN = "SUPER_SECRET_BATCAVE_TOKEN"
 APPROVE_BUTTON_PIN = 21
 PANIC_BUTTON_PIN = 20
-PIR_AUTH_THRESHOLD = 5 # Seconds of continuous presence for auto-auth if enabled
+PIR_AUTH_THRESHOLD = 5 
 
-# Hardware Initialization
 try:
     oled = OLEDDisplay()
     tts = TextToSpeech()

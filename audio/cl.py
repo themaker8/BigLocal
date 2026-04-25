@@ -9,9 +9,7 @@ class ClapDetector:
         self.threshold = threshold
 
     def is_clap(self, samples):
-        # Basic peak detection
         for s in samples:
-            # Handle signed 16-bit
             val = s if s < 32768 else s - 65536
             if abs(val) > self.threshold:
                 return True

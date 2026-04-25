@@ -9,10 +9,10 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("pc_brain")
 
-app = FastAPI(title="Batcave Core Brain")
+app = FastAPI(title="BigLocal Core Brain")
 
 # Security Token (In a real scenario, use environment variables)
-BATCAVE_TOKEN = "SUPER_SECRET_BATCAVE_TOKEN"
+BATCAVE_TOKEN = "SUPER_SECRET_TOKEN"
 
 # State Management
 auth_queue = {} # request_id: { "command": str, "status": str, "event": asyncio.Event, "timestamp": float }
