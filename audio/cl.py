@@ -1,7 +1,7 @@
 
 import array
 import time
-from audio.cl import I2SMicrophone
+from audio.mic import I2SMicrophone
 
 class ClapDetector:
     def __init__(self, mic: I2SMicrophone, threshold=10000):
@@ -17,11 +17,15 @@ class ClapDetector:
 
     def listen_for_clap(self, chunk_duration=0.1):
         while True:
-            samples = self.mic.record(chunk_duration)
+            self.mic.start_recording()
+            time.sleep(chunk_duration)
+            samples = self.mic.stop_recording()
             if self.is_clap(samples):
                 return True
             time.sleep(0.01)
 
     def detect_once(self, chunk_duration=0.1):
-        samples = self.mic.record(chunk_duration)
+        self.mic.start_recording()
+        time.sleep(chunk_duration)
+        samples = self.mic.stop_recording()
         return self.is_clap(samples)

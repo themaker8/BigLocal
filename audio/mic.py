@@ -17,11 +17,16 @@ class I2SMicrophone:
         devices = sd.query_devices()
         for i, device in enumerate(devices):
             if device.get('max_input_channels', 0) > 0 and name_part.lower() in device.get('name', '').lower():
-                print(f"Found I2S input device: {device['name']} at index {i}")
+                print(f"Found input device: {device['name']} at index {i}")
                 return i
             
-        raise RuntimeError(f"I2S input device containing '{name_part}' not found. "
-                           "Ensure I2S is enabled and dtoverlay=i2s-mmap is configured in /boot/config.txt.")
+        # Fallback: If name_part isn't found, just pick the default input device
+        default_device = sd.query_hostapis()[0].get('default_input_device')
+        if default_device is not None:
+            print(f"Warning: '{name_part}' not found. Falling back to default device {default_device}")
+            return default_device
+
+        raise RuntimeError(f"No input device found.")
 
     def __init__(self, sample_rate=44100, channels=1, dtype='int16', device_name_part="i2s", device_id=None):
         """

@@ -57,7 +57,8 @@ class SpeechToText:
             audio_float32, 
             language="en", 
             beam_size=5,
-            no_speech_threshold=0.4
+            no_speech_threshold=0.1, # Make it very lenient
+            log_prob_threshold=None # Disable log probability threshold
         )
 
         print(f'transcription info {info}')
@@ -74,15 +75,7 @@ class SpeechToText:
 if __name__ == "__main__":
     # Determine the microphone for testing based on OS
     mic_test_kwargs = {}
-    if platform.system() == "Windows":
-        print("Detected Windows OS. Attempting to use default microphone for local testing.")
-        mic_test_kwargs = {"device_id": 1} # -1 usually means default input device
-        print("If testing fails, please run 'python -m sounddevice' in your terminal")
-        print("and adjust 'device_id' or 'device_name_part' in the stt.py example usage.")
-    else: # Assume Raspberry Pi OS or similar Linux
-        print("Detected non-Windows OS. Attempting to use I2S microphone (Pi-specific).")
-        mic_test_kwargs = {"device_name_part": "i2s"} # Pi-specific I2S device
-
+    
     # Setup microphone and STT processor
     try:
         mic = I2SMicrophone(**mic_test_kwargs)
