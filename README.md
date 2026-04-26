@@ -1,7 +1,36 @@
-
 # BigLocal
 
-A local based AI running system build for personal activity and agentic work.I created this to ensure that I also have a AI personalized for me to work for me.
+An AI autonomous agent which have access to physical hardware somewhat giving AI an hardware and sensors to control things.Like J.A.R.V.I.S
+
+# Working And Design
+## 1.The core brain
+
+â€¢ Environment: A sandboxed Linux Virtual Machine (VM) on a host laptop.
+
+â€¢ Logic: Runs the AI agent and the OpenClaw framework.
+
+â€¢ Interface: Integrated with Telegram for remote monitoring and command input.
+
+â€¢ Security: The VM isolation prevents the AI or automation scripts from accessing the host's primary file system.
+
+## 2. Hardware Node(Raspberry Pi)
+
+â€¢ Detection: The PIR sensor monitors your workspace. The system remains in "Stealth Mode" until you are physically present.
+
+â€¢ Trigger: When you walk in, the  screen wakes up and displays the current status of your Local AI (e.g., "Brain Idle" or "Analyzing File").
+
+â€¢ Execution: You tap the Piâ€™s screen Pi sends an "Authenticated" signal back to the VM. The VM executes the OpenClaw command.
+
+
+
+
+# Remaining setup once project is done
+
+I utilized a Virtual Machine to isolate the AI's execution environment. This ensures that even if the AI agent or OpenClaw framework is compromised, it cannot access the host machine's primary OS. The Pi Zero acts as the hardware firewall for this isolated 'Big' brain."
+
+
+I would install more sensor and other modules to make it even more next level.
+
 
 
 # BOM
