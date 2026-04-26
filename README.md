@@ -1,6 +1,7 @@
+
 # BigLocal
 
-An AI autonomous agent which have access to physical hardware somewhat giving AI an hardware and sensors to control things.Like J.A.R.V.I.S
+An AI autonomous agent which have access to physical hardware somewhat giving AI an hardware and sensors to control things.Like J.A.R.V.I.S or we can say personalized assistant.
 
 # Working And Design
 ## 1.The core brain
@@ -48,3 +49,5 @@ I would install more sensor and other modules to make it even more next level.
 
 ![App Screenshot](screenshots/image.png)
 ![App Screenshot](screenshots/diagram.png)
+## Project layout
+![App Screenshot](screenshots/Proj_layout.jpg)
