@@ -7,7 +7,7 @@ def diagnostic():
     fs = 44100  # Sample rate
     seconds = 3  # Duration of recording
 
-    print("--- Batcave Audio Diagnostic ---")
+    print("--- Audio Diagnostic ---")
     print(f"1. Recording for {seconds} seconds... Speak now!")
     
     # Record audio
