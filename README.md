@@ -21,11 +21,7 @@ An AI autonomous agent which have access to physical hardware somewhat giving AI
 
 *  Execution: You tap the Pi screen, Pi sends an "Authenticated" signal back to the VM. The VM executes the OpenClaw command.
 
-* Visual encryption and processing : Added a camera to access the visual understanding and works with realtime world
-
-* Spatial Input (ToF Sensor): This is the key budget addition. It performs spatial anti-spoofing by measuring exact distance.
-
-
+*  Visual encryption and processing : Added a camera to access the visual understanding and works with realtime world
 
 
 
