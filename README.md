@@ -30,7 +30,9 @@ As openclaw is installed on a vm it would have a separate db where it will work 
 
 I utilized a Virtual Machine to isolate the AI's execution environment. This ensures that even if the AI agent or OpenClaw framework is compromised, it cannot access the host machine's primary OS. The Pi Zero acts as the hardware firewall for this isolated 'Big' brain."
 
+#CAD(3d Design)
 
+I have designed a 3d enclosure housing for the system which is in CAD folder.
 
 
 
