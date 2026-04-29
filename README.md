@@ -23,14 +23,14 @@ An AI autonomous agent which have access to physical hardware somewhat giving AI
 
 *  Visual encryption and processing : Added a camera to access the visual understanding and works with realtime world
 
-
+## 3. Software side(Openclaw)
+As openclaw is installed on a vm it would have a separate db where it will work with onky specificed tools and environment.I will change ooenclaw for more personalized experience and more safety.The LLM will be Ollama which will run locally on my gpu and would integrate with hardware side once access is given.
 
 # Remaining setup once project is done
 
 I utilized a Virtual Machine to isolate the AI's execution environment. This ensures that even if the AI agent or OpenClaw framework is compromised, it cannot access the host machine's primary OS. The Pi Zero acts as the hardware firewall for this isolated 'Big' brain."
 
 
-I would install more sensor and other modules to make it even more next level.
 
 
 
