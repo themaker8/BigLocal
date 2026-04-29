@@ -1,7 +1,7 @@
 
 # BigLocal
 
-An AI autonomous agent which have access to physical hardware somewhat giving AI an hardware and sensors to control things.Like J.A.R.V.I.S or we can say personalized assistant.
+An AI autonomous agent which have access to physical hardware somewhat giving AI an hardware and sensors to control things.Like J.A.R.V.I.S or we can say personalized assistant.It uses a private environment running locally to ensure full privacy and security.Have access yo various sensor and camera to analysze environment and on software side there is an prebuild agent(openclaw with some hardware integration).Super excited to build this project and take it to next level.
 
 # Working And Design
 ## 1.The core brain
