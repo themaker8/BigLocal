@@ -54,3 +54,9 @@ I have designed a 3d enclosure housing for the system which is in CAD folder.
 ![App Screenshot](screenshots/diagram.png)
 ## Project layout
 ![App Screenshot](screenshots/Proj_layout.jpg)
+
+# CAD
+
+![App Screenshot](screenshots/cad_1.png)
+![App Screenshot](screenshots/cad_2.png)
+![App Screenshot](screenshots/cad_3.png)
