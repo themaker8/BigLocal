@@ -1,3 +1,5 @@
+
+
 # BigLocal
 
 BigLocal is an AI-driven autonomous system designed to bridge software intelligence with physical hardware. The goal is simple: give an AI agent controlled access to sensors and real-world inputs, while keeping everything private, local, and secure.
@@ -63,7 +65,7 @@ The VM setup and configuration will be finalized after completing the hardware b
 ![CAD View](screenshots/opened_view.png)
 
 The enclosure and physical layout were designed using **Onshape**.
-The design focuses on compactness, accessibility, and clean integration of components.
+
 
 ---
 
@@ -71,20 +73,21 @@ The design focuses on compactness, accessibility, and clean integration of compo
 
 | Name                         | Purpose                                             | Quantity | Price (USD) | Link                                                                                                                                                                             | Distributor |
 | ---------------------------- | --------------------------------------------------- | -------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| Power Adapter                | Stable 5V supply for Raspberry Pi                   | 1        | 2.01        | [https://robu.in/product/standard-5v-3a-power-supply-with-l-style-micro-usb-plug](https://robu.in/product/standard-5v-3a-power-supply-with-l-style-micro-usb-plug)               | Robu        |
-| Micro SD Card                | Storage for OS and software                         | 1        | 11.66       | [https://robu.in/product/sandisk-ultra-micro-sd-16gb-uhs-i-98mbs-r-class-10-memory-card](https://robu.in/product/sandisk-ultra-micro-sd-16gb-uhs-i-98mbs-r-class-10-memory-card) | Robu        |
-| LCD Display (3.2")           | Displays system status and interaction interface    | 1        | 19.98       | [https://robu.in/product/3-2-inch-tft-lcd-screen-for-raspberry-pi](https://robu.in/product/3-2-inch-tft-lcd-screen-for-raspberry-pi)                                             | Robu        |
-| PIR Motion Sensor (HC-SR501) | Detects motion in the environment                   | 1        | 0.65        | [https://robu.in/product/pir-motion-sensor-detector-module-hc-sr501](https://robu.in/product/pir-motion-sensor-detector-module-hc-sr501)                                         | Robu        |
-| Raspberry Pi Zero 2 W        | Main controller integrating all hardware components | 1        | 22.50       | [https://robu.in/product/raspberry-pi-zero-2-w-with-header](https://robu.in/product/raspberry-pi-zero-2-w-with-header)                                                           | Robu        |
-| RPi Camera Module V2         | Provides visual input for detection and processing  | 1        | 17.95       | [https://robu.in/product/raspberry-pi-camera-v2](https://robu.in/product/raspberry-pi-camera-v2)                                                                                 | Robu        |
-| Camera Cable (22-pin)        | Connects camera module to Raspberry Pi Zero         | 1        | 0.97        | [https://robu.in/product/raspberry-pi-zero-v1-3-camera-cable](https://robu.in/product/raspberry-pi-zero-v1-3-camera-cable)                                                       | Robu        |
+| Micro SD Card                | Storage for OS and software                         | 1        | 11.59     | [https://robu.in/product/sandisk-ultra-micro-sd-16gb-uhs-i-98mbs-r-class-10-memory-card](https://robu.in/product/sandisk-ultra-micro-sd-16gb-uhs-i-98mbs-r-class-10-memory-card) | Robu        |
+| LCD Display          | Displays system status and interaction interface    | 1        | 5.18       | [https://robu.in/product/ov5647-5mp-ir-cut-camera-for-raspberry-pi-3-with-automatic-day-night-mode-switching](https://robu.in/product/ov5647-5mp-ir-cut-camera-for-raspberry-pi-3-with-automatic-day-night-mode-switching)                                          | Robu        |                                       | Robu        |
+| Raspberry Pi Zero 2 W        | Main controller integrating all hardware components | 1        | 22.32      | [https://robu.in/product/raspberry-pi-zero-2-w-with-header](https://robu.in/product/raspberry-pi-zero-2-w-with-header)                                                           | Robu        |
+| Camera Module          | Provides visual input for detection and processing  | 1        | 8.42      | [https://robu.in/product/ov5647-5mp-ir-cut-camera-for-raspberry-pi-3-with-automatic-day-night-mode-switching](https://robu.in/product/ov5647-5mp-ir-cut-camera-for-raspberry-pi-3-with-automatic-day-night-mode-switching)                                                                                 | Robu        |
+| Camera Cable (22-pin)        | Connects camera module to Raspberry Pi Zero         | 1        | 2.31        | [https://robu.in/product/arducam-cb008-3-8cm-15-to-22-pin-camera-cable](https://robu.in/product/arducam-cb008-3-8cm-15-to-22-pin-camera-cable)                                                       | Robu        |
 
 ---
 
 # Screenshots
 
 ![Interface](screenshots/image.png)
-![Circuit Diagram](screenshots/diagram.png)
+
+A simple diagram of connections of components 
+
+![Circuit diagram](screenshots/diagram.png)
 
 ---
 
@@ -94,32 +97,3 @@ The design focuses on compactness, accessibility, and clean integration of compo
 
 ---
 
-# Notes
-
-This project is still evolving. The current focus is on building a stable hardware foundation before expanding into deeper AI integration.
-
-The broader objective is to create a system that is:
-
-* **Local-first**
-* **Secure by design**
-* **Practical to deploy**
-
----
-
-## 🎯 What improved here (so you learn from it)
-
-* Removed repetition and informal phrasing
-* Tightened technical descriptions
-* Made flow logical (Brain → Hardware → Software)
-* Kept tone **serious but not robotic**
-* Avoided exaggerated claims (this is key to not sounding “AI-generated”)
-
----
-
-If you want, I can also:
-
-* Improve your **GitHub visuals layout (like Hermes)**
-* Add **badges + sections (installation, usage, roadmap)**
-* Or refine your **diagram captions to match professional repos**
-
-Just say 👍
